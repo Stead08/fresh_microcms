@@ -1,7 +1,5 @@
 import {Handlers, PageProps} from "$fresh/server.ts";
 import {Head} from "$fresh/src/runtime/head.ts";
-
-import {tw} from "twind";
 import {microcmsClient} from "../lib/microcmsClient.ts";
 import dayjs from "dayjs";
 
@@ -28,23 +26,23 @@ export const handler: Handlers<Post> = {
 };
 export default function Home({data}: PageProps<Post>) {
     return (
-        <div class={tw("h-screen bg-yellow-200")}>
+        <div class="h-screen bg-yellow-200">
             <Head>
                 <title>Stead Profile</title>
             </Head>
             <div
-                class={tw(
+                class=
                     "max-w-screen-sm mx-auto px-4 sm:px-6 md:px-8 pt-12 pb-20 flex flex-col"
-                )}>
-                <h1 class={tw("font-extrabold text-5xl text-gray-800 flex justify-center")}>Stead Profile</h1>
-                <section class={tw("m-8")}>
+                >
+                <h1 class="font-extrabold text-5xl text-gray-800 flex justify-center">Stead Profile</h1>
+                <section class="m-8">
                     {data.contents.map((content) => {
                         return (
-                            <div class={tw("p-4")} key={content.id}>
+                            <div class="p-4" key={content.id}>
                                 <a href={content.url} alt={content.title}>
                                     <p>{content.title}</p>
                                     <time
-                                        class={tw("text-gray-500 text-sm")}
+                                        class="text-gray-500 text-sm"
                                         dateTime={content.published_article}
                                     >
                                         {dayjs(content.published_article).format("YYYY-MM-DD HH:mm:ss")}
@@ -54,12 +52,11 @@ export default function Home({data}: PageProps<Post>) {
                         )
                     })}
                 </section>
-                    <a href="https://fresh.deno.dev">
-                        <img width="197" height="37" src="https://fresh.deno.dev/fresh-badge.svg"
-                             alt="Made with Fresh"/>
-                    </a>
+                <a href="https://fresh.deno.dev">
+                    <img width="197" height="37" src="https://fresh.deno.dev/fresh-badge.svg"
+                         alt="Made with Fresh"/>
+                </a>
             </div>
-
         </div>
     )
 }
