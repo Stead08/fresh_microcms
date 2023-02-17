@@ -2,6 +2,8 @@ import {Handlers, PageProps} from "$fresh/server.ts";
 import {Head} from "$fresh/src/runtime/head.ts";
 import {microcmsClient} from "../lib/microcmsClient.ts";
 import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 
 export interface Post {
     contents: [{
@@ -11,6 +13,10 @@ export interface Post {
         published_article?: string;
     }];
 }
+//タイムゾーンを設定
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.tz.setDefault("Asia/Tokyo");
 
 export const handler: Handlers<Post> = {
     async GET(_req, ctx) {
