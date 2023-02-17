@@ -9,6 +9,8 @@
     "twind": "https://esm.sh/twind@0.16.17",
     "twind/": "https://esm.sh/twind@0.16.17/",
     "microcms": "https://esm.sh/microcms-js-sdk",
-    "dotenv/": "https://deno.land/x/dotenv@v3.2.0/"
+    "dotenv/": "https://deno.land/x/dotenv@v3.2.0/",
+    "dayjs/": "https://esm.sh/dayjs@1.11.3/",
+    "dayjs": "https://esm.sh/dayjs@1.11.3"
   }
 }
