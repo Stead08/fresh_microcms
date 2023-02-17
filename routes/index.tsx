@@ -9,7 +9,7 @@ export interface Post {
         id: string;
         url: string;
         title: string;
-        published_article: string;
+        published_article?: string;
     }];
 }
 
@@ -20,14 +20,14 @@ export const handler: Handlers<Post> = {
             queries: {limit: 99},
         });
         if (!articles) {
-            return new Response("Project not found", {status: 404});
+            return new Response("Response not found", {status: 404});
         }
         return ctx.render(articles);
     },
 };
 export default function Home({data}: PageProps<Post>) {
     return (
-        <div>
+        <div class={tw("h-screen bg-yellow-200")}>
             <Head>
                 <title>Stead Profile</title>
             </Head>
@@ -35,11 +35,11 @@ export default function Home({data}: PageProps<Post>) {
                 class={tw(
                     "max-w-screen-sm mx-auto px-4 sm:px-6 md:px-8 pt-12 pb-20 flex flex-col"
                 )}>
-                <h1 class={tw("font-extrabold text-5xl text-gray-800")}>Stead Profile</h1>
-                <section class={tw("mt-8")}>
+                <h1 class={tw("font-extrabold text-5xl text-gray-800 flex justify-center")}>Stead Profile</h1>
+                <section class={tw("m-8")}>
                     {data.contents.map((content) => {
                         return (
-                            <div key={content.id}>
+                            <div class={tw("p-4")}key={content.id}>
                                 <a href={content.url} alt={content.title}>
                                     <p>{content.title}</p>
                                     <time
